@@ -6,6 +6,7 @@
 				"name": "SetVariable",
 				"type": "SetVariable",
 				"dependsOn": [],
+				"userProperties": [],
 				"typeProperties": {
 					"variableName": "mi_variable",
 					"value": {
