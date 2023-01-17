@@ -14,6 +14,26 @@
 						"type": "Expression"
 					}
 				}
+			},
+			{
+				"name": "SetVariable2",
+				"type": "SetVariable",
+				"dependsOn": [
+					{
+						"activity": "SetVariable",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"variableName": "mi_variable_2",
+					"value": {
+						"value": "@pipeline().parameters.valor",
+						"type": "Expression"
+					}
+				}
 			}
 		],
 		"parameters": {
@@ -23,6 +43,9 @@
 		},
 		"variables": {
 			"mi_variable": {
+				"type": "String"
+			},
+			"mi_variable_2": {
 				"type": "String"
 			}
 		},
