@@ -18,7 +18,8 @@
 		],
 		"parameters": {
 			"var_param": {
-				"type": "string"
+				"type": "string",
+				"defaultValue": "Hi"
 			}
 		},
 		"variables": {
