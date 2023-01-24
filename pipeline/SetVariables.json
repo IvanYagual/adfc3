@@ -1,51 +1,28 @@
 {
-	"name": "test",
+	"name": "SetVariables",
 	"properties": {
 		"activities": [
 			{
-				"name": "SetVariable",
+				"name": "SetVar",
 				"type": "SetVariable",
 				"dependsOn": [],
 				"userProperties": [],
 				"typeProperties": {
-					"variableName": "mi_variable",
+					"variableName": "var_variable",
 					"value": {
-						"value": "@pipeline().parameters.valor",
-						"type": "Expression"
-					}
-				}
-			},
-			{
-				"name": "SetVariable2",
-				"type": "SetVariable",
-				"dependsOn": [
-					{
-						"activity": "SetVariable",
-						"dependencyConditions": [
-							"Succeeded"
-						]
-					}
-				],
-				"userProperties": [],
-				"typeProperties": {
-					"variableName": "mi_variable_2",
-					"value": {
-						"value": "@pipeline().parameters.valor",
+						"value": "@pipeline().parameters.var_param",
 						"type": "Expression"
 					}
 				}
 			}
 		],
 		"parameters": {
-			"valor": {
+			"var_param": {
 				"type": "string"
 			}
 		},
 		"variables": {
-			"mi_variable": {
-				"type": "String"
-			},
-			"mi_variable_2": {
+			"var_variable": {
 				"type": "String"
 			}
 		},
