@@ -1,0 +1,27 @@
+{
+	"name": "Schedule",
+	"properties": {
+		"annotations": [],
+		"runtimeState": "Started",
+		"pipelines": [
+			{
+				"pipelineReference": {
+					"referenceName": "SetVariables",
+					"type": "PipelineReference"
+				},
+				"parameters": {
+					"var_param": "adios"
+				}
+			}
+		],
+		"type": "ScheduleTrigger",
+		"typeProperties": {
+			"recurrence": {
+				"frequency": "Minute",
+				"interval": 15,
+				"startTime": "2023-01-24T17:35:00Z",
+				"timeZone": "UTC"
+			}
+		}
+	}
+}
