@@ -7,9 +7,6 @@
 		},
 		"AzureBlobStorage1_connectionString": {
 			"value": ""
-		},
-		"Schedule_properties_SetVariables_parameters_var_param": {
-			"value": "adios"
 		}
 	}
 }
