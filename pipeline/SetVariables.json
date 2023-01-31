@@ -3,28 +3,85 @@
 	"properties": {
 		"activities": [
 			{
-				"name": "SetVar",
+				"name": "SetName",
 				"type": "SetVariable",
 				"dependsOn": [],
 				"userProperties": [],
 				"typeProperties": {
-					"variableName": "var_variable",
+					"variableName": "name",
 					"value": {
-						"value": "@pipeline().parameters.var_param",
+						"value": "@pipeline().parameters.name",
+						"type": "Expression"
+					}
+				}
+			},
+			{
+				"name": "SetActive",
+				"type": "SetVariable",
+				"dependsOn": [],
+				"userProperties": [],
+				"typeProperties": {
+					"variableName": "active",
+					"value": {
+						"value": "@pipeline().parameters.active",
+						"type": "Expression"
+					}
+				}
+			},
+			{
+				"name": "SetAge",
+				"type": "SetVariable",
+				"dependsOn": [],
+				"userProperties": [],
+				"typeProperties": {
+					"variableName": "age",
+					"value": {
+						"value": "@string(pipeline().parameters.age)",
+						"type": "Expression"
+					}
+				}
+			},
+			{
+				"name": "SetAccount",
+				"type": "SetVariable",
+				"dependsOn": [],
+				"userProperties": [],
+				"typeProperties": {
+					"variableName": "account",
+					"value": {
+						"value": "@string(pipeline().parameters.account)",
 						"type": "Expression"
 					}
 				}
 			}
 		],
 		"parameters": {
-			"var_param": {
+			"name": {
 				"type": "string",
 				"defaultValue": "Hi"
+			},
+			"age": {
+				"type": "int"
+			},
+			"account": {
+				"type": "float"
+			},
+			"active": {
+				"type": "bool"
 			}
 		},
 		"variables": {
-			"var_variable": {
+			"name": {
 				"type": "String"
+			},
+			"age": {
+				"type": "String"
+			},
+			"account": {
+				"type": "String"
+			},
+			"active": {
+				"type": "Boolean"
 			}
 		},
 		"annotations": []
