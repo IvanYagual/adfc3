@@ -54,13 +54,25 @@
 				"inputs": [
 					{
 						"referenceName": "iris",
-						"type": "DatasetReference"
+						"type": "DatasetReference",
+						"parameters": {
+							"container": {
+								"value": "@pipeline().parameters.input_path",
+								"type": "Expression"
+							}
+						}
 					}
 				],
 				"outputs": [
 					{
 						"referenceName": "iris",
-						"type": "DatasetReference"
+						"type": "DatasetReference",
+						"parameters": {
+							"container": {
+								"value": "@pipeline().parameters.output_path",
+								"type": "Expression"
+							}
+						}
 					}
 				]
 			},
