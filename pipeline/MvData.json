@@ -19,7 +19,7 @@
 						"type": "DelimitedTextSource",
 						"storeSettings": {
 							"type": "AzureBlobStorageReadSettings",
-							"recursive": true,
+							"fileListPath": "input",
 							"enablePartitionDiscovery": false
 						},
 						"formatSettings": {
@@ -29,16 +29,12 @@
 					"sink": {
 						"type": "DelimitedTextSink",
 						"storeSettings": {
-							"type": "AzureBlobStorageWriteSettings",
-							"copyBehavior": {
-								"value": "@pipeline().parameters.output_path",
-								"type": "Expression"
-							}
+							"type": "AzureBlobStorageWriteSettings"
 						},
 						"formatSettings": {
 							"type": "DelimitedTextWriteSettings",
 							"quoteAllText": true,
-							"fileExtension": ".txt"
+							"fileExtension": ".csv"
 						}
 					},
 					"enableStaging": false,
@@ -98,7 +94,13 @@
 				"typeProperties": {
 					"dataset": {
 						"referenceName": "iris",
-						"type": "DatasetReference"
+						"type": "DatasetReference",
+						"parameters": {
+							"container": {
+								"value": "@pipeline().parameters.input_path",
+								"type": "Expression"
+							}
+						}
 					},
 					"logStorageSettings": {
 						"linkedServiceName": {
@@ -117,10 +119,12 @@
 		],
 		"parameters": {
 			"input_path": {
-				"type": "string"
+				"type": "string",
+				"defaultValue": "input"
 			},
 			"output_path": {
-				"type": "string"
+				"type": "string",
+				"defaultValue": "output"
 			}
 		},
 		"annotations": []
