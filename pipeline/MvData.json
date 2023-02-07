@@ -52,10 +52,7 @@
 						"referenceName": "iris",
 						"type": "DatasetReference",
 						"parameters": {
-							"container": {
-								"value": "@pipeline().parameters.input_path",
-								"type": "Expression"
-							}
+							"container": "input"
 						}
 					}
 				],
@@ -64,10 +61,7 @@
 						"referenceName": "iris",
 						"type": "DatasetReference",
 						"parameters": {
-							"container": {
-								"value": "@pipeline().parameters.output_path",
-								"type": "Expression"
-							}
+							"container": "output"
 						}
 					}
 				]
