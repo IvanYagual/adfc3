@@ -50,19 +50,13 @@
 				"inputs": [
 					{
 						"referenceName": "iris",
-						"type": "DatasetReference",
-						"parameters": {
-							"container": "input"
-						}
+						"type": "DatasetReference"
 					}
 				],
 				"outputs": [
 					{
 						"referenceName": "iris",
-						"type": "DatasetReference",
-						"parameters": {
-							"container": "output"
-						}
+						"type": "DatasetReference"
 					}
 				]
 			},
@@ -88,13 +82,7 @@
 				"typeProperties": {
 					"dataset": {
 						"referenceName": "iris",
-						"type": "DatasetReference",
-						"parameters": {
-							"container": {
-								"value": "@pipeline().parameters.input_path",
-								"type": "Expression"
-							}
-						}
+						"type": "DatasetReference"
 					},
 					"logStorageSettings": {
 						"linkedServiceName": {
