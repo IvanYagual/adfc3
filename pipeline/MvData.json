@@ -29,7 +29,8 @@
 					"sink": {
 						"type": "DelimitedTextSink",
 						"storeSettings": {
-							"type": "AzureBlobStorageWriteSettings"
+							"type": "AzureBlobStorageWriteSettings",
+							"copyBehavior": "PreserveHierarchy"
 						},
 						"formatSettings": {
 							"type": "DelimitedTextWriteSettings",
@@ -49,14 +50,26 @@
 				},
 				"inputs": [
 					{
-						"referenceName": "iris",
-						"type": "DatasetReference"
+						"referenceName": "DelimitedText1",
+						"type": "DatasetReference",
+						"parameters": {
+							"container": {
+								"value": "@pipeline().parameters.input_path",
+								"type": "Expression"
+							}
+						}
 					}
 				],
 				"outputs": [
 					{
-						"referenceName": "iris",
-						"type": "DatasetReference"
+						"referenceName": "DelimitedText1",
+						"type": "DatasetReference",
+						"parameters": {
+							"container": {
+								"value": "@pipeline().parameters.output_path",
+								"type": "Expression"
+							}
+						}
 					}
 				]
 			},
