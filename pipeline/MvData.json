@@ -19,7 +19,7 @@
 						"type": "DelimitedTextSource",
 						"storeSettings": {
 							"type": "AzureBlobStorageReadSettings",
-							"fileListPath": "input",
+							"recursive": true,
 							"enablePartitionDiscovery": false
 						},
 						"formatSettings": {
@@ -34,7 +34,7 @@
 						"formatSettings": {
 							"type": "DelimitedTextWriteSettings",
 							"quoteAllText": true,
-							"fileExtension": ".csv"
+							"fileExtension": ".txt"
 						}
 					},
 					"enableStaging": false,
@@ -49,13 +49,13 @@
 				},
 				"inputs": [
 					{
-						"referenceName": "BlobStorageCsv",
+						"referenceName": "Iris",
 						"type": "DatasetReference"
 					}
 				],
 				"outputs": [
 					{
-						"referenceName": "BlobStorageCsv",
+						"referenceName": "CIris",
 						"type": "DatasetReference"
 					}
 				]
