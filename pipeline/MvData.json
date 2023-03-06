@@ -20,7 +20,10 @@
 						"type": "DatasetReference"
 					},
 					"fieldList": [
-						"exists"
+						{
+							"value": "input/*.flg",
+							"type": "Expression"
+						}
 					],
 					"storeSettings": {
 						"type": "AzureBlobStorageReadSettings",
@@ -45,7 +48,7 @@
 				"userProperties": [],
 				"typeProperties": {
 					"expression": {
-						"value": "@contains(join(activity('GetMetadata1').output.childItems.name, ','), '.flg')",
+						"value": "@greater(length(activity('GetMetadata1').output.childItems), 0)\n",
 						"type": "Expression"
 					},
 					"ifTrueActivities": [
