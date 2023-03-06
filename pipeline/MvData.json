@@ -45,7 +45,7 @@
 				"userProperties": [],
 				"typeProperties": {
 					"expression": {
-						"value": "@contains(activity('GetMetadata1').output.firstFileName, '.flg')",
+						"value": "@contains(join(activity('GetMetadata1').output.childItems.name, ','), '.flg')",
 						"type": "Expression"
 					},
 					"ifTrueActivities": [
