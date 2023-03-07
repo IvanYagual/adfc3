@@ -125,7 +125,7 @@
 				],
 				"userProperties": [],
 				"typeProperties": {
-					"condition": {
+					"items": {
 						"value": "input/*.flg",
 						"type": "Expression"
 					}
