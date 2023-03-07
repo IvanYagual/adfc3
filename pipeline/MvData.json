@@ -40,7 +40,7 @@
 				"type": "IfCondition",
 				"dependsOn": [
 					{
-						"activity": "Set variable1",
+						"activity": "Filter",
 						"dependencyConditions": [
 							"Succeeded"
 						]
@@ -49,7 +49,7 @@
 				"userProperties": [],
 				"typeProperties": {
 					"expression": {
-						"value": "@bool(activity('Filter').output.value)",
+						"value": "@array(activity('Filter').output.value)",
 						"type": "Expression"
 					},
 					"ifTrueActivities": [
@@ -136,28 +136,6 @@
 						"value": "@endsWith(item().name, '.flg')",
 						"type": "Expression"
 					}
-				}
-			},
-			{
-				"name": "Set variable1",
-				"type": "SetVariable",
-				"dependsOn": [
-					{
-						"activity": "Filter",
-						"dependencyConditions": [
-							"Succeeded"
-						]
-					}
-				],
-				"userProperties": [
-					{
-						"name": "variable",
-						"value": "@activity('Filter').output.value"
-					}
-				],
-				"typeProperties": {
-					"variableName": "variabel",
-					"value": ""
 				}
 			}
 		],
