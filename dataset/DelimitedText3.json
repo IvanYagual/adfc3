@@ -13,8 +13,8 @@
 				"container": "input"
 			},
 			"columnDelimiter": ",",
-			"escapeChar": "\\",
-			"quoteChar": "\""
+			"escapeChar": "",
+			"quoteChar": ""
 		},
 		"schema": [
 			{
