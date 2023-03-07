@@ -3,7 +3,7 @@
 	"properties": {
 		"activities": [
 			{
-				"name": "Copy data1",
+				"name": "mv_data_sql",
 				"type": "Copy",
 				"dependsOn": [],
 				"policy": {
@@ -18,16 +18,45 @@
 					"source": {
 						"type": "MySqlSource"
 					},
-					"enableStaging": false
-				}
+					"sink": {
+						"type": "DelimitedTextSink",
+						"storeSettings": {
+							"type": "AzureBlobStorageWriteSettings"
+						},
+						"formatSettings": {
+							"type": "DelimitedTextWriteSettings",
+							"quoteAllText": true,
+							"fileExtension": ".csv"
+						}
+					},
+					"enableStaging": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"typeConversion": true,
+						"typeConversionSettings": {
+							"allowDataTruncation": true,
+							"treatBooleanAsNumber": false
+						}
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "MySqlTable1",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "DelimitedText2",
+						"type": "DatasetReference"
+					}
+				]
 			}
 		],
-		"parameters": {
-			"input_path": {
-				"type": "string"
-			},
-			"out_path": {
-				"type": "string"
+		"variables": {
+			"exist": {
+				"type": "String",
+				"defaultValue": "False"
 			}
 		},
 		"annotations": []

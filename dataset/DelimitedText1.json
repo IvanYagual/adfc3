@@ -5,15 +5,14 @@
 			"referenceName": "AzureBlobStorage1",
 			"type": "LinkedServiceReference"
 		},
+		"folder": {
+			"name": "UBUNTU-AZURE"
+		},
 		"annotations": [],
 		"type": "DelimitedText",
 		"typeProperties": {
 			"location": {
 				"type": "AzureBlobStorageLocation",
-				"folderPath": {
-					"value": "@concat(formatDateTime(utcnow(), 'yyyyMMdd'), '/')",
-					"type": "Expression"
-				},
 				"container": "input"
 			},
 			"columnDelimiter": ",",
