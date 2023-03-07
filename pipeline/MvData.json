@@ -49,7 +49,7 @@
 				"userProperties": [],
 				"typeProperties": {
 					"expression": {
-						"value": "@array(activity('Filter').output.value)",
+						"value": "@activity('Filter').output.value",
 						"type": "Expression"
 					},
 					"ifTrueActivities": [
