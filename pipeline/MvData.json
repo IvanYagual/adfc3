@@ -3,7 +3,7 @@
 	"properties": {
 		"activities": [
 			{
-				"name": "GetMetadata1",
+				"name": "GetMetadata",
 				"type": "GetMetadata",
 				"dependsOn": [],
 				"policy": {
@@ -37,7 +37,7 @@
 				"type": "IfCondition",
 				"dependsOn": [
 					{
-						"activity": "Filter1",
+						"activity": "Filter",
 						"dependencyConditions": [
 							"Succeeded"
 						]
@@ -46,7 +46,7 @@
 				"userProperties": [],
 				"typeProperties": {
 					"expression": {
-						"value": "@greater(length(activity('GetMetadata1').output.childItems), 0)\n",
+						"value": "@bool(activity('Filter').output.firstRow)\n\n",
 						"type": "Expression"
 					},
 					"ifTrueActivities": [
@@ -113,11 +113,11 @@
 				}
 			},
 			{
-				"name": "Filter1",
+				"name": "Filter",
 				"type": "Filter",
 				"dependsOn": [
 					{
-						"activity": "GetMetadata1",
+						"activity": "GetMetadata",
 						"dependencyConditions": [
 							"Succeeded"
 						]
@@ -126,7 +126,11 @@
 				"userProperties": [],
 				"typeProperties": {
 					"items": {
-						"value": "input/*.flg",
+						"value": "@endsWith(item().name, '.flg')",
+						"type": "Expression"
+					},
+					"condition": {
+						"value": "@endsWith(item().name, '.flg')",
 						"type": "Expression"
 					}
 				}
