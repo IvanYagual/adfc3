@@ -27,6 +27,7 @@
 					],
 					"storeSettings": {
 						"type": "AzureBlobStorageReadSettings",
+						"recursive": true,
 						"enablePartitionDiscovery": false
 					},
 					"formatSettings": {
@@ -39,7 +40,7 @@
 				"type": "IfCondition",
 				"dependsOn": [
 					{
-						"activity": "Filter",
+						"activity": "Set variable1",
 						"dependencyConditions": [
 							"Succeeded"
 						]
@@ -48,7 +49,7 @@
 				"userProperties": [],
 				"typeProperties": {
 					"expression": {
-						"value": "@bool(activity('Filter').output.firstRow)\n\n",
+						"value": "@bool(activity('Filter').output.value)",
 						"type": "Expression"
 					},
 					"ifTrueActivities": [
@@ -128,7 +129,7 @@
 				"userProperties": [],
 				"typeProperties": {
 					"items": {
-						"value": "@items()",
+						"value": "@activity('GetMetadata').output.childItems",
 						"type": "Expression"
 					},
 					"condition": {
@@ -136,8 +137,38 @@
 						"type": "Expression"
 					}
 				}
+			},
+			{
+				"name": "Set variable1",
+				"type": "SetVariable",
+				"dependsOn": [
+					{
+						"activity": "Filter",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [
+					{
+						"name": "variable",
+						"value": "@activity('Filter').output.value"
+					}
+				],
+				"typeProperties": {
+					"variableName": "variabel",
+					"value": ""
+				}
 			}
 		],
+		"variables": {
+			"variabel": {
+				"type": "String"
+			},
+			"valor": {
+				"type": "String"
+			}
+		},
 		"annotations": []
 	}
 }
