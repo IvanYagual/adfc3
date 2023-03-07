@@ -1,14 +1,43 @@
 {
-	"name": "pipeline2",
+	"name": "MvData",
 	"properties": {
 		"activities": [
 			{
-				"name": "Append variable1",
-				"type": "AppendVariable",
+				"name": "Until1",
+				"type": "Until",
 				"dependsOn": [],
-				"userProperties": []
+				"userProperties": [],
+				"typeProperties": {
+					"activities": [
+						{
+							"name": "Verification",
+							"type": "ExecutePipeline",
+							"dependsOn": [],
+							"userProperties": [],
+							"typeProperties": {
+								"pipeline": {
+									"referenceName": "Verification",
+									"type": "PipelineReference"
+								},
+								"waitOnCompletion": true,
+								"parameters": {
+									"verification": {
+										"value": "@variables('verification')",
+										"type": "Expression"
+									}
+								}
+							}
+						}
+					],
+					"timeout": "0.12:00:00"
+				}
 			}
 		],
+		"variables": {
+			"verification": {
+				"type": "String"
+			}
+		},
 		"annotations": []
 	}
 }
