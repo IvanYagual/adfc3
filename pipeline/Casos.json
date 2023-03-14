@@ -9,7 +9,7 @@
 				"userProperties": [],
 				"typeProperties": {
 					"on": {
-						"value": "@switch.(pipeline().parameters.casos),\n    1, 'case1',\n    2, 'case2',\n    'default'\n)",
+						"value": "@if(equals(variables('casos'), 1), 'case1', \n    if(equals(variables('casos'), 2), 'case2','default' )\n    )\n)",
 						"type": "Expression"
 					},
 					"cases": [
@@ -53,10 +53,9 @@
 				}
 			}
 		],
-		"parameters": {
+		"variables": {
 			"casos": {
-				"type": "string",
-				"defaultValue": "0"
+				"type": "String"
 			}
 		},
 		"annotations": []
