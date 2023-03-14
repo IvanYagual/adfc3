@@ -1,16 +1,62 @@
 {
-	"name": "Verification",
+	"name": "Casos",
 	"properties": {
-		"parameters": {
-			"verification": {
-				"type": "string",
-				"defaultValue": "False"
+		"activities": [
+			{
+				"name": "Switch1",
+				"type": "Switch",
+				"dependsOn": [],
+				"userProperties": [],
+				"typeProperties": {
+					"on": {
+						"value": "@switch.(pipeline().parameters.casos),\n    1, 'case1',\n    2, 'case2',\n    'default'\n)",
+						"type": "Expression"
+					},
+					"cases": [
+						{
+							"value": "Case1",
+							"activities": [
+								{
+									"name": "MvData_ubuntu",
+									"type": "ExecutePipeline",
+									"dependsOn": [],
+									"userProperties": [],
+									"typeProperties": {
+										"pipeline": {
+											"referenceName": "MvData_ubuntu",
+											"type": "PipelineReference"
+										},
+										"waitOnCompletion": true
+									}
+								}
+							]
+						},
+						{
+							"value": "Case2",
+							"activities": [
+								{
+									"name": "MvData_sql",
+									"type": "ExecutePipeline",
+									"dependsOn": [],
+									"userProperties": [],
+									"typeProperties": {
+										"pipeline": {
+											"referenceName": "MvData_sql",
+											"type": "PipelineReference"
+										},
+										"waitOnCompletion": true
+									}
+								}
+							]
+						}
+					]
+				}
 			}
-		},
-		"variables": {
-			"exist": {
-				"type": "String",
-				"defaultValue": "False"
+		],
+		"parameters": {
+			"casos": {
+				"type": "string",
+				"defaultValue": "0"
 			}
 		},
 		"annotations": []
