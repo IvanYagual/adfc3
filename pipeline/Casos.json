@@ -3,60 +3,68 @@
 	"properties": {
 		"activities": [
 			{
-				"name": "Switch1",
-				"type": "Switch",
+				"name": "If Condition1",
+				"type": "IfCondition",
 				"dependsOn": [],
 				"userProperties": [],
 				"typeProperties": {
-					"on": {
-						"value": "@if(equals(variables('casos'), 1), 'case1', \n    if(equals(variables('casos'), 2), 'case2','default' )\n    )\n)",
+					"expression": {
+						"value": "@equals(variables('MvUbuntu'),true)",
 						"type": "Expression"
 					},
-					"cases": [
+					"ifTrueActivities": [
 						{
-							"value": "Case1",
-							"activities": [
-								{
-									"name": "MvData_ubuntu",
-									"type": "ExecutePipeline",
-									"dependsOn": [],
-									"userProperties": [],
-									"typeProperties": {
-										"pipeline": {
-											"referenceName": "MvData_ubuntu",
-											"type": "PipelineReference"
-										},
-										"waitOnCompletion": true
-									}
-								}
-							]
-						},
+							"name": "MvData_ubuntu",
+							"type": "ExecutePipeline",
+							"dependsOn": [],
+							"userProperties": [],
+							"typeProperties": {
+								"pipeline": {
+									"referenceName": "MvData_ubuntu",
+									"type": "PipelineReference"
+								},
+								"waitOnCompletion": true
+							}
+						}
+					]
+				}
+			},
+			{
+				"name": "If Condition2",
+				"type": "IfCondition",
+				"dependsOn": [],
+				"userProperties": [],
+				"typeProperties": {
+					"expression": {
+						"value": "@equals(variables('MvSql'),true)",
+						"type": "Expression"
+					},
+					"ifTrueActivities": [
 						{
-							"value": "Case2",
-							"activities": [
-								{
-									"name": "MvData_sql",
-									"type": "ExecutePipeline",
-									"dependsOn": [],
-									"userProperties": [],
-									"typeProperties": {
-										"pipeline": {
-											"referenceName": "MvData_sql",
-											"type": "PipelineReference"
-										},
-										"waitOnCompletion": true
-									}
-								}
-							]
+							"name": "MvMySQL",
+							"type": "ExecutePipeline",
+							"dependsOn": [],
+							"userProperties": [],
+							"typeProperties": {
+								"pipeline": {
+									"referenceName": "MvMySQL",
+									"type": "PipelineReference"
+								},
+								"waitOnCompletion": true
+							}
 						}
 					]
 				}
 			}
 		],
 		"variables": {
-			"casos": {
-				"type": "String",
-				"defaultValue": "2"
+			"MvSql": {
+				"type": "Boolean",
+				"defaultValue": true
+			},
+			"MvUbuntu": {
+				"type": "Boolean",
+				"defaultValue": false
 			}
 		},
 		"annotations": []
