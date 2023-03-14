@@ -55,7 +55,8 @@
 		],
 		"variables": {
 			"casos": {
-				"type": "String"
+				"type": "String",
+				"defaultValue": "2"
 			}
 		},
 		"annotations": []
